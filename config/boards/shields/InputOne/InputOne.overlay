@@ -1,6 +1,41 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/pinctrl/nrf-pinctrl.h>
 
+    &pinctrl {
+        spi0_default: spi0_default {
+            group1 {
+                psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>, <NRF_PSEL(SPIM_SCK, 0, 20)>;
+            };
+        };
+
+        spi0_sleep: spi0_sleep {
+            group1 {
+                psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>, <NRF_PSEL(SPIM_SCK, 0, 20)>;
+                low-power-enable;
+            };
+        };
+    };
+
+    &spi0 {
+        compatible = "nordic,nrf-spim";
+        status = "okay";
+        cs-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
+
+        pinctrl-0 = <&spi0_default>;
+        pinctrl-1 = <&spi3_sleep>;
+        pinctrl-names = "default", "sleep";
+
+        shifter: 595@0 {
+            compatible = "zmk,gpio-595";
+            status = "okay";
+            gpio-controller;
+            spi-max-frequency = <200000>;
+            reg = <0>;
+            #gpio-cells = <2>;
+            ngpios = <8>;
+        };
+    };
+
 / {
     chosen {
         zmk,kscan = &kscan0;
@@ -21,31 +56,7 @@
         >;
     };
 
-    &pinctrl {
-        spi0_default: spi0_default {
-            group1 {
-                psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>, <NRF_PSEL(SPIM_SCK, 0, 20)>;
-            };
-        };
-    };
 
-    &spi0 {
-        status = "okay";
-        cs-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
-
-        pinctrl-0 = <&spi0_default>;
-        pinctrl-names = "default";
-
-        shifter: 595@0 {
-            compatible = "zmk,gpio-595";
-            status = "okay";
-            gpio-controller;
-            spi-max-frequency = <200000>;
-            reg = <0>;
-            #gpio-cells = <2>;
-            ngpios = <8>;
-        };
-    };
 
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";

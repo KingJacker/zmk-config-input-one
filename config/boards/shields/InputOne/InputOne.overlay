@@ -36,6 +36,14 @@
         };
     };
 
+    &gpio0 {
+	    status = "okay";
+    };
+
+    &gpio1 {
+        status = "okay";
+    };
+
 / {
     chosen {
         zmk,kscan = &kscan0;

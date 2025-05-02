@@ -22,7 +22,7 @@
     };
 
 
-    &spi1 {
+    &pro_micro_spi {
         status = "okay";
         cs-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 
@@ -67,17 +67,17 @@
     };
 
 
-    encoder_1: encoder_1 {
+    encoder0: encoder0 {
         compatible = "alps,ec11";
         a-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Encoder A P0.31 
         b-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Encoder B P0.29 
         steps = <80>;
         status = "okay";
     };
-
+    
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&encoder_1>;
+        sensors = <&encoder0>;
         triggers-per-rotation = <24>;
     };
 };

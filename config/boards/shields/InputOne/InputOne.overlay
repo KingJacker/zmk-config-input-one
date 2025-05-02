@@ -5,7 +5,6 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,sensors = <&encoder_1>; // Ensure sensor reference is correct
     };
 
     default_transform: keymap_transform0 {

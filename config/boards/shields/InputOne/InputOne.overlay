@@ -28,7 +28,7 @@
         pinctrl-1 = <&spi0_sleep>;
         pinctrl-names = "default", "sleep";
 
-        shifter: 74HC595@0 {
+        shifter: 595@0 {
             compatible = "zmk,gpio-595";
             status = "okay";
             gpio-controller;
@@ -112,10 +112,5 @@
 
     vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
-        label = "BATTERY";
-    };
-
-    &adc {
-        status = "okay";
     };
 };

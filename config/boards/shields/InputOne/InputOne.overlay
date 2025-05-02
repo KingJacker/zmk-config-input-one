@@ -1,5 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include "InputOne-pinctrl.dtsi"
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
 
 / {
     chosen {
@@ -7,6 +7,13 @@
         zmk,matrix_transform = &default_transform;
     };
 
+    &pinctrl {
+        spi0_default: spi0_default {
+            group1 {
+                psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>, <NRF_PSEL(SPIM_SCK, 0, 20)>;
+            };
+        };
+    };
 
     default_transform: keymap_transform0 {
         compatible = "zmk,matrix-transform";
@@ -21,7 +28,6 @@
             RC(4,0) RC(4,1) RC(4,2) RC(4,3) &none   &none   &none   &none   &none   RC(4,9) RC(4,10) RC(4,11) RC(4,12) RC(4,13) RC(4,14)
         >;
     };
-
 
     &spi0 {
         status = "okay";
@@ -40,7 +46,6 @@
             ngpios = <8>;
         };
     };
-
 
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
@@ -69,7 +74,6 @@
                     <&gpio1 01 GPIO_ACTIVE_HIGH>,  // C13 P1.01     
                     <&gpio0 11 GPIO_ACTIVE_HIGH>;  // C14 P0.11     
     };
-
 
     encoder0: encoder0 {
         compatible = "alps,ec11";

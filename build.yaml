@@ -20,5 +20,5 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: NumPad01
-    artifact-name: NumPad01-Firmware
+    shield: InputOne
+    artifact-name: InputOne-Firmware

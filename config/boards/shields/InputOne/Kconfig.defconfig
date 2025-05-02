@@ -1,0 +1,9 @@
+if SHIELD_INPUTONE
+
+config ZMK_KEYBOARD_NAME
+	default "InputOne"
+
+config SPI
+    default y
+
+endif

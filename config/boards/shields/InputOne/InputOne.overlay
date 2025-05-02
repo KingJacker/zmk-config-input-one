@@ -109,13 +109,4 @@
         sensors = <&encoder0>;
         triggers-per-rotation = <24>;
     };
-
-    vbatt: vbatt {
-        compatible = "zmk,battery-nrf-vddh";
-        label = "BATTERY";
-    };
-
-    &saadc {
-        status = "okay";
-    };
 };

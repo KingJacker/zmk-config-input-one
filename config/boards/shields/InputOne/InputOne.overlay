@@ -24,16 +24,16 @@
 
     &spi1 {
         status = "okay";
-        cs-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>; // Shift Register Latch Pin (P0.8) as CS
+        cs-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 
         shifter: 595@0 {
             compatible = "zmk,gpio-595";
             status = "okay";
             gpio-controller;
-            spi-max-frequency = <200000>; // Adjust if needed, maybe higher for faster scanning
-            reg = <0>; // Corresponds to the first CS pin in cs-gpios
+            spi-max-frequency = <200000>;
+            reg = <0>;
             #gpio-cells = <2>;
-            ngpios = <8>; // One 8-bit shift register (C0-C7)
+            ngpios = <8>;
         };
     };
 
@@ -43,35 +43,34 @@
         diode-direction = "col2row";
         wakeup-source;
 
-        row-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R0 P0.02 */
-                    <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* R1 P1.15 */
-                    <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* R2 P1.13 */
-                    <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* R3 P1.11 */
-                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* R4 P0.10 */
+        row-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R0 P0.02 
+                    <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // R1 P1.15
+                    <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // R2 P1.13 
+                    <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // R3 P1.11 
+                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // R4 P0.10
 
-        /* Column GPIOs: C0-C7 from shift register, C8-C14 direct */
-        col-gpios = <&shifter 7 GPIO_ACTIVE_HIGH>, /*  C0 */
-                    <&shifter 6 GPIO_ACTIVE_HIGH>, /*  C1 */
-                    <&shifter 5 GPIO_ACTIVE_HIGH>, /*  C2 */
-                    <&shifter 4 GPIO_ACTIVE_HIGH>, /*  C3 */
-                    <&shifter 3 GPIO_ACTIVE_HIGH>, /*  C4 */
-                    <&shifter 2 GPIO_ACTIVE_HIGH>, /*  C5 */
-                    <&shifter 1 GPIO_ACTIVE_HIGH>, /*  C6 */
-                    <&shifter 0 GPIO_ACTIVE_HIGH>, /*  C7 */
-                    <&gpio0 22 GPIO_ACTIVE_HIGH>,  /*  C8 P0.22 */
-                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  /*  C9 P0.24 */
-                    <&gpio1 00 GPIO_ACTIVE_HIGH>,  /* C10 P1.00 */
-                    <&gpio1 07 GPIO_ACTIVE_HIGH>,  /* C11 P1.07 */
-                    <&gpio1 02 GPIO_ACTIVE_HIGH>,  /* C12 P1.02 */
-                    <&gpio1 01 GPIO_ACTIVE_HIGH>,  /* C13 P1.01 */    
-                    <&gpio0 11 GPIO_ACTIVE_HIGH>;  /* C14 P0.11 */    
+        col-gpios = <&shifter 7 GPIO_ACTIVE_HIGH>, //  C0 
+                    <&shifter 6 GPIO_ACTIVE_HIGH>, //  C1 
+                    <&shifter 5 GPIO_ACTIVE_HIGH>, //  C2 
+                    <&shifter 4 GPIO_ACTIVE_HIGH>, //  C3 
+                    <&shifter 3 GPIO_ACTIVE_HIGH>, //  C4 
+                    <&shifter 2 GPIO_ACTIVE_HIGH>, //  C5 
+                    <&shifter 1 GPIO_ACTIVE_HIGH>, //  C6 
+                    <&shifter 0 GPIO_ACTIVE_HIGH>, //  C7 
+                    <&gpio0 22 GPIO_ACTIVE_HIGH>,  //  C8 P0.22 
+                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  //  C9 P0.24 
+                    <&gpio1 00 GPIO_ACTIVE_HIGH>,  // C10 P1.00 
+                    <&gpio1 07 GPIO_ACTIVE_HIGH>,  // C11 P1.07 
+                    <&gpio1 02 GPIO_ACTIVE_HIGH>,  // C12 P1.02 
+                    <&gpio1 01 GPIO_ACTIVE_HIGH>,  // C13 P1.01     
+                    <&gpio0 11 GPIO_ACTIVE_HIGH>;  // C14 P0.11     
     };
 
 
-    encoder_1: encoder_1 { // Ensure node label matches chosen/keymap sensor reference
+    encoder_1: encoder_1 {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* Encoder A P0.31 */
-        b-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; /* Encoder B P0.29 */
+        a-gpios = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Encoder A P0.31 
+        b-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // Encoder B P0.29 
         steps = <80>;
         status = "okay";
     };

@@ -4,13 +4,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <behaviors/rgbled_widget.dtsi>
-
 #include "boards/shields/InputOne/keys_de_swiss.h"
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
     keymap {
@@ -18,30 +17,29 @@
 
         default_layer {
             bindings = <
-                /*          C0             C1             C2             C3             C4             C5             C6             C7             C8             C9             C10             C11              C12            C13            C14       */                  
-                /* Row 0 */ &kp ESC        &kp DE_N1      &kp DE_N2      &kp DE_N3      &kp DE_N4      &kp DE_N5      &kp DE_N6      &kp DE_N7      &kp DE_N8      &kp DE_N9      &kp DE_N0       &kp DE_SQT       &kp DE_CARET   &kp BSPC       &none
-                /* Row 1 */ &kp TAB        &kp Q          &kp W          &kp E          &kp R          &kp T          &kp Y          &kp U          &kp I          &kp O          &kp P           &kp DE_U_UMLAUT  &kp DE_UMLAUT  &kp RET        &kp DEL
-                /* Row 2 */ &kp CAPS       &kp A          &kp S          &kp D          &kp F          &kp G          &kp H          &kp J          &kp K          &kp L          &kp DE_O_UMLAUT &kp DE_A_UMLAUT  &kp DE_DLLR    &none          &mo 1
-                /* Row 3 */ &kp LSFT       &kp DE_LT      &kp Z          &kp X          &kp C          &kp V          &kp B          &kp N          &kp M          &kp DE_COMMA   &kp DE_DOT      &kp DE_MINUS     &kp RSFT       &none          &kp UP
-                /* Row 4 */ &kp LCTL       &kp LGUI       &kp LALT       &none          &none          &none          &kp SPACE      &none          &none          &kp RALT       &kp RGUI            &kp RCTL         &kp LEFT       &kp DOWN       &kp RIGHT
+&kp ESC     &kp DE_N1  &kp DE_N2  &kp DE_N3  &kp DE_N4  &kp DE_N5  &kp DE_N6  &kp DE_N7  &kp DE_N8  &kp DE_N9     &kp DE_N0        &kp DE_SQT       &kp DE_CARET   &kp BSPC  &kp C_MUTE
+&kp TAB     &kp Q      &kp W      &kp E      &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O         &kp P            &kp DE_U_UMLAUT  &kp DE_UMLAUT  &kp RET   &kp DEL
+&kp CAPS    &kp A      &kp S      &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L         &kp DE_O_UMLAUT  &kp DE_A_UMLAUT  &kp DE_DLLR    &none     &mo 1
+&kp LSHIFT  &kp DE_LT  &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M      &kp DE_COMMA  &kp DE_DOT       &kp DE_MINUS     &kp RSHIFT     &none     &kp UP
+&kp LCTRL   &kp LGUI   &kp LALT   &none      &none      &none      &kp SPACE  &none      &none      &kp RALT      &kp RGUI         &kp RCTRL        &kp LEFT       &kp DOWN  &kp RIGHT
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
             label = "Default";
         };
 
-        fn_layer { // Layer 1 / BT Layer
+        fn_layer {
             display-name = "fn_layer";
             bindings = <
-                /*          C0             C1             C2             C3             C4             C5             C6             C7             C8             C9             C10             C11              C12            C13            C14       */                  
-                /* Row 0 */ &trans         &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10         &kp F11          &kp F12        &bt BT_CLR     &none
-                /* Row 1 */ &trans         &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &bt BT_SEL 6   &bt BT_SEL 7   &trans         &trans          &trans           &trans         &trans         &trans 
-                /* Row 2 */ &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans          &trans           &trans         &none          &trans 
-                /* Row 3 */ &ind_bat       &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans          &trans           &trans         &none          &out OUT_BLE
-                /* Row 4 */ &ind_con       &trans         &trans         &none          &none          &none          &trans         &none          &none          &trans         &trans          &trans           &trans         &out OUT_USB   &trans           
+&kp DE_SECTION  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6            &kp F7        &kp F8        &kp F9  &kp F10  &kp F11  &kp F12     &bt BT_CLR    &trans
+&trans          &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5      &bt BT_SEL 6  &bt BT_SEL 7  &trans  &trans   &trans   &trans      &trans        &trans
+&trans          &trans        &trans        &trans        &trans        &trans        &trans            &trans        &trans        &trans  &trans   &trans   &trans      &none         &trans
+&ind_bat        &trans        &trans        &trans        &trans        &trans        &trans            &trans        &trans        &trans  &trans   &trans   &trans      &none         &out OUT_BLE
+&ind_con        &trans        &trans        &none         &none         &none         &kp C_PLAY_PAUSE  &none         &none         &trans  &trans   &trans   &kp C_PREV  &out OUT_USB  &kp C_NEXT
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
             label = "fn_layer";
         };
-
     };
 };

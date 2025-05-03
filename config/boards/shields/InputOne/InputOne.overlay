@@ -108,4 +108,12 @@
         sensors = <&encoder0>;
         triggers-per-rotation = <24>;
     };
+
+    aliases {
+        adc = &saadc;
+    };
+};
+
+&saadc {
+    status = "okay";
 };

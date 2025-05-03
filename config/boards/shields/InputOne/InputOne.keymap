@@ -23,7 +23,7 @@
                 /* Row 1 */ &kp TAB        &kp Q          &kp W          &kp E          &kp R          &kp T          &kp Y          &kp U          &kp I          &kp O          &kp P           &kp DE_U_UMLAUT  &kp DE_UMLAUT  &kp RET        &kp DEL
                 /* Row 2 */ &kp CAPS       &kp A          &kp S          &kp D          &kp F          &kp G          &kp H          &kp J          &kp K          &kp L          &kp DE_O_UMLAUT &kp DE_A_UMLAUT  &kp DE_DLLR    &none          &mo 1
                 /* Row 3 */ &kp LSFT       &kp DE_LT      &kp Z          &kp X          &kp C          &kp V          &kp B          &kp N          &kp M          &kp DE_COMMA   &kp DE_DOT      &kp DE_MINUS     &kp RSFT       &none          &kp UP
-                /* Row 4 */ &kp LCTL       &kp LGUI       &kp LALT       &none          &none          &none          &kp SPACE      &none          &none          &kp RALT       RGUI            &kp RCTL         &kp LEFT       &kp DOWN       &kp RIGHT
+                /* Row 4 */ &kp LCTL       &kp LGUI       &kp LALT       &none          &none          &none          &kp SPACE      &none          &none          &kp RALT       &kp RGUI            &kp RCTL         &kp LEFT       &kp DOWN       &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
             label = "Default";

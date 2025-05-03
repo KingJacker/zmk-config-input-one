@@ -10,7 +10,7 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <behaviors/rgbled_widget.dtsi>
 
-#include "keys_de_swiss.h"
+#include "boards/shields/InputOne/keys_de_swiss.h"
 
 / {
     keymap {

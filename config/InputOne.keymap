@@ -12,6 +12,15 @@
 #include <dt-bindings/zmk/outputs.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        Tilde {
+            bindings = <&kp TILDE>;
+            key-positions = <52 69>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 

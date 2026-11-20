@@ -128,3 +128,8 @@
         };
     };
 };
+
+// P0.09 (blue LED) and P0.10 (row R4) are the nRF52840 NFC pins; use them as GPIO
+&uicr {
+    nfct-pins-as-gpios;
+};

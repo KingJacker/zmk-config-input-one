@@ -12,12 +12,13 @@
 #include <dt-bindings/zmk/outputs.h>
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        Tilde {
-            bindings = <&kp TILDE>;
-            key-positions = <52 69>;
+    behaviors {
+        // N normally; Swiss-German tilde (AltGr + ^) while either Alt is held
+        n_tilde: n_tilde {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N>, <&kp DE_TILDE>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
     };
 
@@ -29,7 +30,7 @@
 &kp ESC     &kp DE_N1  &kp DE_N2  &kp DE_N3  &kp DE_N4  &kp DE_N5  &kp DE_N6  &kp DE_N7  &kp DE_N8  &kp DE_N9     &kp DE_N0        &kp DE_SQT       &kp DE_CARET   &kp BSPC      &kp C_MUTE
 &kp TAB     &kp Q      &kp W      &kp E      &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O         &kp P            &kp DE_U_UMLAUT  &kp DE_UMLAUT  &kp RET       &kp DEL
 &kp CAPS    &kp A      &kp S      &kp D      &kp F      &kp G      &kp H      &kp J      &kp K      &kp L         &kp DE_O_UMLAUT  &kp DE_A_UMLAUT  &kp DE_DLLR    &none         &mo 1
-&kp LSHIFT  &kp DE_LT  &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M      &kp DE_COMMA  &kp DE_DOT       &kp DE_MINUS     &kp RSHIFT     &kp UP_ARROW  &none
+&kp LSHIFT  &kp DE_LT  &kp Z      &kp X      &kp C      &kp V      &kp B      &n_tilde   &kp M      &kp DE_COMMA  &kp DE_DOT       &kp DE_MINUS     &kp RSHIFT     &kp UP_ARROW  &none
 &kp LCTRL   &kp LGUI   &kp LALT   &none      &none      &none      &kp SPACE  &none      &none      &kp RALT      &kp RGUI         &kp RCTRL        &kp LEFT       &kp DOWN      &kp RIGHT
             >;
 

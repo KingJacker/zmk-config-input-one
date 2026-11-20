@@ -7,10 +7,10 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: 4de313367288aad5aeaa1243890e40dc813f7008 # pinned ZMK main (Zephyr 4.1), 2026-11
       import: app/west.yml
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: main
+      revision: e6b467792a1dabef8cfa5c9fd26bfefc9c16662b # pinned, matches ZMK above
   self:
     path: config
